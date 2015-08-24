@@ -1,0 +1,19 @@
+.welcome
+  .row
+    .small-12.large-12.column
+      %h1 Get your History
+.row
+  .large-12.medium-12.column
+    = form_for @log, url: {action: "get_digest"} do |f|
+
+      - if @errors
+        %div.alert-box.alert.radius{data: {alert:true}}
+          = @errors
+          %a.close{:href => "#"} &times
+
+      .large-12.columns
+        = f.label :email, 'Ohio State Email (lowercase name.#@osu.edu please)'
+        = f.email_field :email
+
+      = f.submit 'Submit', class: "button"
+

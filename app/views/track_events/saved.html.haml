@@ -1,0 +1,15 @@
+.welcome
+  .row
+    .small-12.large-12.column
+      %h1 Success
+
+.row
+  .small-12.large-12.column
+    %h3 Congratulations, you just logged that event!
+    %p
+      We just sent you an email confirmation, too, with your progress toward
+      your involvement requirements. Thank you for remembering to log!
+
+    .text-center
+      = link_to 'Log Another Event', new_track_event_path, class: "button"
+

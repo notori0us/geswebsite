@@ -1,0 +1,20 @@
+.welcome
+  .row
+    .small-12.large-12.column
+      %h1 Involvement Tracking
+      %h3 Green Engineering Scholars at The Ohio State University
+
+      .text-center
+        = link_to 'Log an Event', new_track_event_path, class: "button large"
+        = link_to 'Get my History', track_events_digest_path, class: "button large"
+
+.row
+  .small-12.large-12.column
+    %h2 What do I do?
+    %p
+      Just click
+      %em Log an Event
+      to get started. When you're ready to see everything you've done so far,
+      click
+      %em Get my History.
+

@@ -1,0 +1,61 @@
+.welcome
+  .row
+    .small-12.large-12.column
+      %h1 Log an Event
+.row
+  .large-12.medium-12.column
+    = form_for @log, url: track_events_path do |f|
+
+      - if @log.errors.any?
+        - @log.errors.full_messages.each do |msg|
+          %div.alert-box.alert.radius{data: {alert:true}}
+            = msg
+            %a.close{:href => "#"} &times
+
+      .large-12.columns
+        = f.label :email, 'Ohio State Email (name.#@osu.edu please)'
+        = f.email_field :email, placeholder: 'buckeye.1@osu.edu'
+
+      .large-12.columns
+        = f.label :year
+        = f.select :year, {"First" => 1, "Second" => 2}
+
+      .large-12.columns
+        = f.label :category
+        = f.select :category,
+          {"Community Service" => "CS", "GES Event" => "GES",
+           "Long Term Event" => "LTE"}
+
+      .large-12.columns
+        = f.label :title
+        = f.text_field :title, placeholder: 'Welcome Picnic'
+
+      .large-12.columns
+        = f.label :location
+        = f.text_field :location, placeholder: 'LARH'
+
+      .large-12.columns
+        = f.label :date
+        = f.text_field :date
+
+      .large-12.columns
+        = f.label :info, 'Any additional Information you would like to add (optional)'
+        = f.text_area :info
+
+      %fieldset.large-12.columns
+        %legend Community Service Events
+        %p
+          %em Please fill out the following for CS events ONLY.
+
+        .large-12.columns
+          = f.label :length, "Length (in hours)"
+          = f.number_field :length
+
+        .large-12.columns
+          = f.label :contact, "Contact Person (email, phone, etc)"
+          = f.text_field :contact
+
+      = f.submit 'Submit', class: "button"
+
+    = javascript_include_tag "datepicker"
+

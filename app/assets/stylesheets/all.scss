@@ -1,0 +1,108 @@
+@import "normalize";
+@import "settings";
+@import "foundation";
+@import "fonts";
+
+// Variables
+$darkGray: hsla(0, 2%, 21%, 1);
+
+html, body { height: 100%; }
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1em;
+  margin-bottom: 1em;
+}
+
+// Fonts
+.name h1 { font-family: "ClearSansRegular"; }
+
+em,
+figcaption {
+  font-family: "ClearSansItalic";
+  font-weight: normal;
+  font-style: normal;
+}
+
+b,
+strong,
+h1, h2, h3, h4, h5, h6, {
+  font-family: "ClearSansBold";
+  font-weight: normal;
+}
+
+strong em {
+  font-family: "ClearSansBoldItalic";
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Footer
+footer {
+  * { color: #fff; }
+  img#footer-logo { margin: 0 10px 0 0; }
+
+  background-color: $darkGray;
+  margin: -70px 0 0 0;
+  padding-top: 1.0625rem;
+  clear: both;
+  position: relative;
+  height: 70px;
+}
+
+#not-footer{
+  clear:both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -70px;
+  padding-bottom: 70px;
+  box-sizing: border-box;
+}
+
+.welcome {
+  * { color: #fff; }
+
+  background:
+    $darkGray image-url("bg-buckeyepattern.jpg") top center repeat-x;
+  margin: 0 0 2.5em;
+  padding-top: 2em;
+}
+
+button, .button { white-space: nowrap; }
+
+#stats span.number {
+  display: block;
+  font-size: 200%;
+}
+
+div#nav-parent { border-bottom: 5px solid $primary-color; }
+
+#report { padding-top: 0.875rem; }
+
+blockquote.pull-quote{
+  float: right;
+  width: 250px;
+}
+
+ul.author-list,
+figcaption {
+  color: lighten($body-font-color, 30%);
+}
+
+// Figures and captions
+figure {
+  figcaption { margin: .5em 0 0; }
+
+  margin: 2em 1.5em;
+}
+
+img.right {
+  margin: 0 0 2em 2em;
+}
+
+// Layout
+.center { text-align: center; }
+
+// nicer errors
+.field_with_errors { @extend .error; }

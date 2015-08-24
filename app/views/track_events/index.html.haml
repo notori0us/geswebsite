@@ -1,0 +1,47 @@
+.welcome
+  .row
+    .small-12.large-12.column
+      %h1 All Logs
+
+.row
+  .small-12.large-12.column
+    %h3
+      =@logs.count
+      logs
+
+    %p
+      =link_to 'Download CSV', track_events_path + ".csv", class: "button"
+      =link_to 'Delete all', track_events_path + "/delete_all", class: "button", id: "confirm-delete"
+
+    %table
+      %tr
+        %th id
+        %th email
+        %th year
+        %th title
+        %th date
+        %th category
+        %th optional_info
+        %th CS_contact
+        %th CS_hours
+
+      - @logs.each do |l|
+        %tr
+          %td
+            =link_to l.id
+          %td
+            =l.email
+          %td
+            =l.year
+          %td
+            =l.title
+          %td
+            =l.date
+          %td
+            =l.category
+          %td
+            =l.info
+          %td
+            =l.contact
+          %td
+            =l.length

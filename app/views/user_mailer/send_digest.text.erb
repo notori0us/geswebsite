@@ -1,0 +1,29 @@
+<% if @logs.count > 0 %>
+Your current GES Involvement Tracking Status:
+
+Hours CS: <%= @cs_hours %>
+
+GES Events: <%= @ges_events %>
+
+Long Term Events: <%= @lte_events %>
+
+Full listing of all logged events below:
+
+<% @logs.each do |l| %>
+--------------------------------------------------------------------------------
+Category: <%= l.category %>
+Title: <%= l.title %>
+Location: <%= l.location %>
+Date: <%= l.date %>
+Hours: <% if l.category == 'CS' %><%= l.length %><% else %>n/a<% end %>
+--------------------------------------------------------------------------------
+<% end %>
+
+<% else %>
+No events logged yet. Go log something first :)
+<% end %>
+
+- your friends at the GES involvement tracking team
+
+--
+Problems? Let us know! Email wallace.586@osu.edu
