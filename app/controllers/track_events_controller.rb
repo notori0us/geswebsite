@@ -1,6 +1,6 @@
 class TrackEventsController < ApplicationController
-	http_basic_authenticate_with name: "lizriter", password: "theoneandonly", only: :index
-	http_basic_authenticate_with name: "lizriter", password: "theoneandonly", only: :delete_it_all
+	http_basic_authenticate_with name: ENV['ADMIN_USER'], password: ENV['ADMIN_PASSWORD'], only: :index
+	http_basic_authenticate_with name: ENV['ADMIN_USER'], password: ENV['ADMIN_PASSWORD'], only: :delete_it_all
 
 	def new
 		@log = TrackEvent.new
