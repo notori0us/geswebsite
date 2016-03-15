@@ -5,13 +5,43 @@
 
 .row
   .small-12.large-12.column
-    %h3
-      =@logs.count
-      logs
+    %h3 Search
 
-    %p
-      =link_to 'Download CSV', track_events_path + ".csv", class: "button"
-      =link_to 'Delete all', track_events_path + "/delete_all", class: "button", id: "confirm-delete"
+    =form_tag track_events_path, :method => :get do
+      =label_tag "name.#"
+      =text_field_tag "user", ""
+      =submit_tag 'Search', class: "button tiny"
+
+
+.row
+  .small-12.large-12.column
+    %h3
+      - if @user.nil?
+        =@logs.count
+        logs total
+      - else
+        =@logs.count
+        logs for
+        =@user
+
+    - if @user.present?
+      %table
+        %tr
+          %th Total CS Hours
+          %th Total GES Events
+          %th Total Long Term Events
+        %tr
+          %th
+            =@logs.where(category: "CS").sum(:length)
+          %th
+            =@logs.where(category: "GES").count
+          %th
+            =@logs.where(category: "LTE").count
+
+    - if @user.nil?
+      %p
+        =link_to 'Download CSV', track_events_path + ".csv", class: "button"
+        =link_to 'Delete all', track_events_path + "/delete_all", class: "button", id: "confirm-delete"
 
     %table
       %tr

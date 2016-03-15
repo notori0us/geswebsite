@@ -9,7 +9,13 @@ class TrackEventsController < ApplicationController
 	# show all
 	# # TODO batch grab
 	def index
-		@logs = TrackEvent.all
+
+		if params[:user].present?
+			@user = params[:user]
+			@logs = TrackEvent.where email: @user + "@osu.edu"
+		else
+			@logs = TrackEvent.all
+		end
 
 		respond_to do |format|
 			format.html
