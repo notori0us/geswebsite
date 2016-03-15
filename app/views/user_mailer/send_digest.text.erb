@@ -1,11 +1,11 @@
 <% if @logs.count > 0 %>
 Your current GES Involvement Tracking Status:
 
-Hours CS: <%= @cs_hours %>
+Hours CS: <%= @logs.where(category: "CS").sum(:length) %>
 
-GES Events: <%= @ges_events %>
+GES Events: <%= @logs.where(category: "GES").count %>
 
-Long Term Events: <%= @lte_events %>
+Long Term Events: <%= @logs.where(category: "LTE").count %>
 
 Full listing of all logged events below:
 
