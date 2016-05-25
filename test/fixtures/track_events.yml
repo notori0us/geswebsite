@@ -1,21 +1,37 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Fixtures (aka test data) for TrackEvent. Makes 3000 entries, for
+# buckeye.0-999. each user has 3 events, one of each.
 
-one:
-  email: MyString
-  year: 1
-  category: MyString
-  title: MyString
-  location: MyString
+<% 1000.times do |n| %>
+lte_<%= n %>:
+  email: <%= "buckeye.#{n}@osu.edu" %>
+  year: <%= (n%2)+1 %>
+  category: LTE
+  title: Mentor (FLOW)
+  location: irrelevant
   date: 2015-07-23
-  info: MyText
-  contact: MyString
+  info:  I'm not sure if this counts as a long term event but this is a class I'm taking this class to learn more about how to get involved in research in the EEOB department which culminates in me creating a research proposal and writing a grant proposal as well. Also, the date above is when I began the class and it continues on until the end of the semester.
+<% end %>
 
-two:
-  email: MyString
-  year: 1
-  category: MyString
-  title: MyString
-  location: MyString
+<% 1000.times do |n| %>
+cs_<%= n %>:
+  email: <%= "buckeye.#{n}@osu.edu" %>
+  year: <%= (n%2)+1 %>
+  category: CS
+  title: Customer Service.. no wait Community Service
+  location: Everywhere!
   date: 2015-07-23
-  info: MyText
-  contact: MyString
+  info: We volunteered and cleaned up columbus. It was awesome.
+  contact: <%= "riter.#{n}@osu.edu" %>
+  length: <%= (n%24)+1 %>
+<% end %>
+
+<% 1000.times do |n| %>
+ges_<%= n %>:
+  email: <%= "buckeye.#{n}@osu.edu" %>
+  year: <%= (n%2)+1 %>
+  category: GES
+  title: GES Welcome Event
+  location: koooooon house
+  date: 2015-07-23
+  info: We met interesting people.
+<% end %>
