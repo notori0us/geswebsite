@@ -35,6 +35,12 @@ class TrackEventTest < ActiveSupport::TestCase
 		assert @log.errors.size == 1
 	end
 
+	test "create event wrong year" do
+		@log.year = 3
+		assert_not @log.save
+		assert @log.errors.size == 1
+	end
+
 	test "create event without date" do
 		@log.date = nil
 		assert_not @log.save
