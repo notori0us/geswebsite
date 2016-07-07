@@ -11,7 +11,7 @@ class TrackEventsController < ApplicationController
 	def index
 
 		if params[:user].present?
-			@user = params[:user]
+			@user = params[:user].strip.downcase
 			@logs = TrackEvent.where email: @user + "@osu.edu"
 		else
 			@logs = TrackEvent.all
