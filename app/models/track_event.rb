@@ -8,6 +8,14 @@ class OsuemailValidator < ActiveModel::EachValidator
 	end
 end
 
+class HoursValidator < ActiveModel::Validator
+	def validate(record)
+		unless record.length.nil? or record.length % 0.5 == 0
+			record.errors[:length] << 'should be a multiple of 0.5'
+		end
+	end
+end
+
 class TrackEvent < ActiveRecord::Base
 
 	# validate and do a dropdown for category_options and year_options
@@ -41,6 +49,7 @@ class TrackEvent < ActiveRecord::Base
 	validates_presence_of :length, :if => lambda {self.category == 'CS'}
 	validates_presence_of :contact, :if => lambda {self.category == 'CS'}
 	validates :length, :numericality => { :greater_than_or_equal_to => 0 }, :if => lambda {self.category == 'CS'}
+	validates :length, hours: true, :if => lambda {self.category == 'CS'}
 
 	def self.as_csv
 		CSV.generate do |csv|

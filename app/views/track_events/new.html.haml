@@ -49,7 +49,7 @@
 
         .large-12.columns
           = f.label :length, "Length (in hours)"
-          = f.number_field :length
+          = f.number_field :length, step: 0.5
 
         .large-12.columns
           = f.label :contact, "Contact Person (email, phone, etc)"
