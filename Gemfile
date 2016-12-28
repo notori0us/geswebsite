@@ -43,8 +43,8 @@ gem 'font-awesome-rails'
 #
 
 group :production do
-	gem 'mysql2', '~> 0.3.18'
 	gem 'puma'
+	gem 'mysql2', '~>0.3.21'
 end
 
 group :development do
