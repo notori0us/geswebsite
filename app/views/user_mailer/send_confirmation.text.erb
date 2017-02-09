@@ -6,11 +6,11 @@ Here's a little about your log:
 Category: <%= @log.category %>
 Title: <%= @log.title %>
 Location: <%= @log.location %>
-<% unless @log.length.nil? %>Length: <%= @log.length %><% end %>
+Date: <%= @log.date %>
+Hours: <% if @log.category == 'CS' %><%= @log.length %><% else %>n/a<% end %>
 --------------------------------------------------------------------------------
 
 - your friends at the GES involvement tracking team
 
 --
-Problems? Let us know! Email wallace.586@osu.edu or open an issue:
-https://github.com/notori0us/geswebsite/issues
+Problems? Open an issue at: https://github.com/notori0us/geswebsite/issues
