@@ -74,7 +74,7 @@
         -e = @log.errors[:description]
         = f.label :description,
           class: ('is-invalid-label' if e.any?)
-        = f.text_area :title, placeholder: 'An event welcoming all honors and scholars to Ohio State',
+        = f.text_area :description, placeholder: 'An event welcoming all honors and scholars to Ohio State',
           class: ('is-invalid-input' if e.any?)
         - if e.any?
           %small.form-error.is-visible=e.join(', ')
