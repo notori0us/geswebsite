@@ -9,7 +9,6 @@ class TrackEventsController < ApplicationController
 	# show all
 	# # TODO batch grab
 	def index
-
 		if params[:user].present?
 			@user = params[:user].strip.downcase
 			@logs = TrackEvent.where email: @user + "@osu.edu"
@@ -26,6 +25,7 @@ class TrackEventsController < ApplicationController
 
 	def create
 		@log = TrackEvent.new(track_event_params)
+		@log.email.downcase!
 
 		if @log.save
 			UserMailer.send_confirmation(@log).deliver_now
@@ -62,8 +62,9 @@ class TrackEventsController < ApplicationController
 	private
 	def track_event_params
 		params.require(:track_event).permit(:email, :year, :category, :title,
-											:location, :date, :info, :length,
-											:contact)
+											:description, :location, :date,
+											:start_time, :info, :length,
+											:contact, :contact_name)
 	end
 
 end

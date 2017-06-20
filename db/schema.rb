@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707083402) do
+ActiveRecord::Schema.define(version: 20170620050654) do
 
   create_table "track_events", force: :cascade do |t|
     t.string   "email"
-    t.integer  "year",       limit: 1
+    t.integer  "year",         limit: 1
     t.string   "category"
     t.string   "title"
     t.string   "location"
     t.date     "date"
     t.text     "info"
     t.string   "contact"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.float    "length"
+    t.string   "contact_name"
+    t.string   "start_time"
+    t.text     "description"
   end
 
 end

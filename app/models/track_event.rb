@@ -38,16 +38,22 @@ class TrackEvent < ActiveRecord::Base
 	validates_inclusion_of :year, :in => YEAR_OPTIONS
 
 	# everything is required except extra info
+	validates_presence_of :start_time
 	validates_presence_of :date
 	validates_presence_of :location
+	validates_presence_of :description
 	validates_presence_of :title
 
 	validates :email, presence: true, osuemail: true
 
 
 	# conditional validation for length (only for CS events)
-	validates_presence_of :length, :if => lambda {self.category == 'CS'}
-	validates_presence_of :contact, :if => lambda {self.category == 'CS'}
+	validates_presence_of :length, :if => lambda {self.category == 'CS'},
+		message: "can't be blank for community service events"
+	validates_presence_of :contact, :if => lambda {self.category == 'CS'},
+		message: "can't be blank for community service events"
+	validates_presence_of :contact_name, :if => lambda {self.category == 'CS'},
+		message: "can't be blank for community service events"
 	validates :length, :numericality => { :greater_than_or_equal_to => 0 }, :if => lambda {self.category == 'CS'}
 	validates :length, hours: true, :if => lambda {self.category == 'CS'}
 
@@ -61,4 +67,3 @@ class TrackEvent < ActiveRecord::Base
 	end
 
 end
-

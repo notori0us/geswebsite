@@ -8,3 +8,13 @@ $(function() {
 		return confirm('Are you absolutely sure you want to delete everything?!?');
 	});
 });
+
+$(function() {
+	$('#track_event_category').change(function(event) {
+		if (this.value == 'CS') {
+			$('#cs-fields').show();
+		} else {
+			$('#cs-fields').hide();
+		}
+	});
+});

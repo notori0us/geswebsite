@@ -1,8 +1,8 @@
 !!!
-%htm
+%html
   %head
     %title GES Involvement Tracking
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -10,18 +10,17 @@
   %body
     #not-footer
       #nav-parent.contain-to-grid
-        %nav.top-bar{data: {topbar:true}}
-          %ul.title-area
-            %li.name
-              %h1 
-                %a{:href => '/'} GES Tracking
-
-          %section.top-bar-section
-            %ul.right
-              %li
-                %a{:href => 'https://u.osu.edu/osuges'} GES Website
-              %li
-                %a{:href => 'https://github.com/notori0us/geswebsite'} Source Code
+        %nav.top-bar
+          .row.column
+            .top-bar-left
+              %ul.menu
+                %li.menu-text GES Tracking
+            .top-bar-right.hide-for-small-only
+              %ul.menu
+                %li
+                  %a{href: 'https://u.osu.edu/osuges/upcoming-events-2'} GES Calendar
+                %li
+                  %a{href: 'https://github.com/notori0us/geswebsite'} Source Code
 
       = yield
 
@@ -34,7 +33,7 @@
         .hide-for-small-only.medium-4.large-4.columns
           %p.django-note
             Powered by
-            %a{:href => 'http://rubyonrails.org'} Rails
+            %a{href: 'http://rubyonrails.org'} Rails
             and
-            %a{:href => 'https://aws.amazon.com'} Amazon Web Services
+            %a{href: 'https://aws.amazon.com'} Amazon Web Services
 

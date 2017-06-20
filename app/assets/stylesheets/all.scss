@@ -1,9 +1,8 @@
-@import "normalize";
-@import "settings";
-@import "foundation";
+@import "foundation_and_overrides";
 @import "fonts";
 
-// Variables
+// This file contains font overrides and custom CSS
+
 $darkGray: hsla(0, 2%, 21%, 1);
 
 html, body { height: 100%; }
@@ -13,9 +12,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1em;
   margin-bottom: 1em;
 }
-
-// Fonts
-.name h1 { font-family: "ClearSansRegular"; }
 
 em,
 figcaption {
@@ -50,6 +46,7 @@ footer {
   height: 70px;
 }
 
+// Everything that's not the footer
 #not-footer{
   clear:both;
   min-height: 100%;
@@ -60,6 +57,7 @@ footer {
   box-sizing: border-box;
 }
 
+// buckeye pattern welcome area
 .welcome {
   * { color: #fff; }
 
@@ -103,6 +101,3 @@ img.right {
 
 // Layout
 .center { text-align: center; }
-
-// nicer errors
-.field_with_errors { @extend .error; }

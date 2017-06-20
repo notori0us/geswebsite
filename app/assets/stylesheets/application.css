@@ -12,6 +12,8 @@
  *
  aoeiaoei*=oeua require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
 //= require all
 //= require font-awesome
@@ -36,11 +38,4 @@ footer a {
 
 footer a:hover {
 	color: #777;
-}
-
-.help-text {
-	margin-top: -0.5rem;
-	font-size: 0.8125rem;
-	font-style: italic;
-	color: #0a0a0a;
 }

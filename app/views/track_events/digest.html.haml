@@ -7,13 +7,17 @@
     = form_for @log, url: {action: "get_digest"} do |f|
 
       - if @errors
-        %div.alert-box.alert.radius{data: {alert:true}}
-          = @errors
-          %a.close{:href => "#"} &times
+        %div.callout.alert.radius{data: {alert:true}}
+          %h5
+            %i.fa.fa-exclamation-circle
+            Email not sent
+          %p=@errors
 
       .large-12.columns
-        = f.label :email, 'Ohio State Email (lowercase name.#@osu.edu please)'
-        = f.email_field :email
+        = f.label :email, 'Ohio State Email (lowercase name.#@osu.edu please)',
+          class: ('is-invalid-label' if @errors)
+        = f.email_field :email,
+          class: ('is-invalid-input' if @errors)
 
       = f.submit 'Submit', class: "button"
 

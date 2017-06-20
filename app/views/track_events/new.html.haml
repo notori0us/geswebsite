@@ -4,56 +4,141 @@
       %h1 Log an Event
 .row
   .large-12.medium-12.column
-    = form_for @log, url: track_events_path do |f|
-
-      - if @log.errors.any?
-        - @log.errors.full_messages.each do |msg|
-          %div.alert-box.alert.radius{data: {alert:true}}
-            = msg
-            %a.close{:href => "#"} &times
+    = form_for @log, url: {action: 'create'} do |f|
 
       .large-12.columns
-        = f.label :email, 'Ohio State Email (name.#@osu.edu please)'
-        = f.email_field :email, placeholder: 'buckeye.1@osu.edu'
+        - if @log.errors.any?
+          .callout.alert.radius{data: {alert:true}}
+            %h5
+              %i.fa.fa-exclamation-circle
+              Your log was not saved
+            %p
+              Please correct the #{'error'.pluralize(@log.errors.size)} below.
+        - else
+          .callout.radius
+            %h5
+              %i.fa.fa-info-circle
+              Forget something?
+            %p
+              %a{href: 'https://u.osu.edu/osuges/upcoming-events-2'}
+                Visit the GES Calendar to find past events!
 
       .large-12.columns
-        = f.label :year
-        = f.select :year, {"First" => 1, "Second" => 2}
+        - e = @log.errors[:email]
+        = f.label :email, 'Ohio State Email (name.#@osu.edu please)',
+          class: ('is-invalid-label' if e.any?)
+        = f.email_field :email, placeholder: 'buckeye.1@osu.edu',
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
 
       .large-12.columns
-        = f.label :category
+        -e = @log.errors[:year]
+        = f.label :year,
+          class: ('is-invalid-label' if e.any?)
+        = f.select :year, {"First" => 1, "Second" => 2},
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
+        %p.help-text
+          Please indicate if you're in your first or second year at OSU.
+
+      .large-12.columns
+        -e = @log.errors[:category]
+        = f.label :category,
+          class: ('is-invalid-label' if e.any?)
         = f.select :category,
           {"Community Service" => "CS", "GES Event" => "GES",
-           "Long Term Event" => "LTE"}
+            "Long Term Event" => "LTE"},
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
+        %p.help-text
+          Please indicate what type of activity you are logging. For activities
+          with multiple categories, please log them multiple times.
+          /<kbd>Shift+Click</kbd> to
+          /select multiple.
 
       .large-12.columns
-        = f.label :title
-        = f.text_field :title, placeholder: 'Welcome Picnic'
+        -e = @log.errors[:title]
+        = f.label :title,
+          class: ('is-invalid-label' if e.any?)
+        = f.text_field :title, placeholder: 'Welcome Picnic',
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
+        %p.help-text
+          Please indicate the title of the event
 
       .large-12.columns
-        = f.label :location
-        = f.text_field :location, placeholder: 'LARH'
+        -e = @log.errors[:description]
+        = f.label :description,
+          class: ('is-invalid-label' if e.any?)
+        = f.text_area :title, placeholder: 'An event welcoming all honors and scholars to Ohio State',
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
+        %p.help-text
+          A concise one to two sentence description of the event.
 
       .large-12.columns
-        = f.label :date
-        = f.text_field :date
+        -e = @log.errors[:location]
+        = f.label :location,
+          class: ('is-invalid-label' if e.any?)
+        = f.text_field :location, placeholder: 'Kuhn House',
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
 
       .large-12.columns
-        = f.label :info, 'Any additional Information you would like to add (optional)'
+        -e = @log.errors[:date]
+        = f.label :date,
+          class: ('is-invalid-label' if e.any?)
+        = f.text_field :date,
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
+
+      .large-12.columns
+        -e = @log.errors[:start_time]
+        = f.label :start_time,
+          class: ('is-invalid-label' if e.any?)
+        = f.text_field :start_time,
+          class: ('is-invalid-input' if e.any?)
+        - if e.any?
+          %small.form-error.is-visible=e.join(', ')
+
+      .large-12.columns
+        = f.label :info, 'Any additional information you would like to add (optional)'
         = f.text_area :info
 
-      %fieldset.large-12.columns
-        %legend Community Service Events
-        %p
-          %em Please fill out the following for CS events ONLY.
+      #cs-fields
+        .large-12.columns
+          -e = @log.errors[:length]
+          = f.label :length, "Length (in hours)",
+            class: ('is-invalid-label' if e.any?)
+          = f.number_field :length, step: 0.5,
+            class: ('is-invalid-input' if e.any?)
+          - if e.any?
+            %small.form-error.is-visible=e.join(', ')
 
         .large-12.columns
-          = f.label :length, "Length (in hours)"
-          = f.number_field :length, step: 0.5
+          -e = @log.errors[:contact_name]
+          = f.label :contact_name, "Contact person's name",
+            class: ('is-invalid-label' if e.any?)
+          = f.text_field :contact_name,
+            class: ('is-invalid-input' if e.any?)
+          - if e.any?
+            %small.form-error.is-visible=e.join(', ')
 
         .large-12.columns
-          = f.label :contact, "Contact Person (email, phone, etc)"
-          = f.text_field :contact
+          -e = @log.errors[:contact]
+          = f.label :contact, "Contact email or phone",
+            class: ('is-invalid-label' if e.any?)
+          = f.text_field :contact,
+            class: ('is-invalid-input' if e.any?)
+          - if e.any?
+            %small.form-error.is-visible=e.join(', ')
 
       = f.submit 'Submit', class: "button"
 

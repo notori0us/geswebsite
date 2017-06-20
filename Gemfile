@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
@@ -27,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 
 # foundation for rails
-#gem 'foundation-rails'
+gem 'foundation-rails'
 #
 # font awesome
 gem 'font-awesome-rails'
