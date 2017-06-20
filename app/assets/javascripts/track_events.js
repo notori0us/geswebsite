@@ -10,6 +10,12 @@ $(function() {
 });
 
 $(function() {
+	category = $('#track_event_category').val();
+	if (category == 'CS') {
+		$('#cs-fields').show();
+	} else {
+		$('#cs-fields').hide();
+	}
 	$('#track_event_category').change(function(event) {
 		if (this.value == 'CS') {
 			$('#cs-fields').show();
