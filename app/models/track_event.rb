@@ -25,7 +25,12 @@ class TrackEvent < ActiveRecord::Base
 		#'Green Engineering Scholars',
 		'GES',
 		#'Long Term Event (Second Years Only)'
-		'LTE'
+		'LTE',
+
+		# special cases
+		'CSGES',
+		'2GES',
+		'3GES'
 	]
 
 	validates_inclusion_of :category, :in => CATEGORY_OPTIONS
@@ -48,14 +53,14 @@ class TrackEvent < ActiveRecord::Base
 
 
 	# conditional validation for length (only for CS events)
-	validates_presence_of :length, :if => lambda {self.category == 'CS'},
+	validates_presence_of :length, :if => lambda {self.category == 'CS' or self.category == 'CSGES'},
 		message: "can't be blank for community service events"
-	validates_presence_of :contact, :if => lambda {self.category == 'CS'},
+	validates_presence_of :contact, :if => lambda {self.category == 'CS' or self.category == 'CSGES'},
 		message: "can't be blank for community service events"
-	validates_presence_of :contact_name, :if => lambda {self.category == 'CS'},
+	validates_presence_of :contact_name, :if => lambda {self.category == 'CS' or self.category == 'CSGES'},
 		message: "can't be blank for community service events"
-	validates :length, :numericality => { :greater_than_or_equal_to => 0 }, :if => lambda {self.category == 'CS'}
-	validates :length, hours: true, :if => lambda {self.category == 'CS'}
+	validates :length, :numericality => { :greater_than_or_equal_to => 0 }, :if => lambda {self.category == 'CS' or self.category == 'CSGES'}
+	validates :length, hours: true, :if => lambda {self.category == 'CS' or self.category == 'CSGES'}
 
 	def self.as_csv
 		CSV.generate do |csv|

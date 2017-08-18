@@ -48,16 +48,17 @@
         = f.label :category,
           class: ('is-invalid-label' if e.any?)
         = f.select :category,
-          {"Community Service" => "CS", "GES Event" => "GES",
-            "Long Term Event" => "LTE"},
+          { "Community Service": "CS",
+            "Community Service and 1 GES Event": "CSGES",
+            "1 GES Event": "GES",
+            "2 GES Events": "2GES",
+            "3 GES Events": "3GES",
+            "Long Term Event": "LTE" },
           class: ('is-invalid-input' if e.any?)
         - if e.any?
           %small.form-error.is-visible=e.join(', ')
         %p.help-text
-          Please indicate what type of activity you are logging. For activities
-          with multiple categories, please log them multiple times.
-          /<kbd>Shift+Click</kbd> to
-          /select multiple.
+          Please indicate what kind of activity you are logging. These are new for the 2017-2018 year.
 
       .large-12.columns
         -e = @log.errors[:title]
@@ -68,7 +69,7 @@
         - if e.any?
           %small.form-error.is-visible=e.join(', ')
         %p.help-text
-          Please indicate the title of the event
+          Please indicate the title of the event.
 
       .large-12.columns
         -e = @log.errors[:description]
@@ -79,7 +80,7 @@
         - if e.any?
           %small.form-error.is-visible=e.join(', ')
         %p.help-text
-          A concise one to two sentence description of the event.
+          Please provide a concise one to two sentence description of the event.
 
       .large-12.columns
         -e = @log.errors[:location]

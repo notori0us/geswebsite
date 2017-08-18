@@ -27,8 +27,28 @@ class TrackEventsController < ApplicationController
 		@log = TrackEvent.new(track_event_params)
 		@log.email.downcase!
 
-		if @log.save
-			UserMailer.send_confirmation(@log).deliver_now
+		if @log.valid?
+			if @log.category == 'CSGES'
+				@log.category = 'CS'
+				ges_log = @log.dup
+				ges_log.category = 'GES'
+
+				UserMailer.send_confirmation(ges_log).deliver_now if ges_log.save
+			elsif @log.category == '2GES'
+				@log.category = 'GES'
+				ges2 = @log.dup
+				ges2.category = 'GES'
+				UserMailer.send_confirmation(ges2).deliver_now if ges2.save
+			elsif @log.category == '3GES'
+				@log.category = 'GES'
+				ges2 = @log.dup
+				ges2.category = 'GES'
+				ges3 = @log.dup
+				ges3.category = 'GES'
+				UserMailer.send_confirmation(ges2).deliver_now if ges2.save
+				UserMailer.send_confirmation(ges3).deliver_now if ges3.save
+			end
+			UserMailer.send_confirmation(@log).deliver_now if @log.save
 			redirect_to track_events_saved_path
 		else
 			render 'new'

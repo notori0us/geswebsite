@@ -11,13 +11,14 @@ $(function() {
 
 $(function() {
 	category = $('#track_event_category').val();
-	if (category == 'CS') {
+	if (category == 'CS' || category == 'CSGES') {
 		$('#cs-fields').show();
 	} else {
 		$('#cs-fields').hide();
 	}
 	$('#track_event_category').change(function(event) {
-		if (this.value == 'CS') {
+		category = $('#track_event_category').val();
+		if ((category == 'CS') || (category == 'CSGES')) {
 			$('#cs-fields').show();
 		} else {
 			$('#cs-fields').hide();
