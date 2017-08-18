@@ -4,7 +4,13 @@ class UserMailer < ActionMailer::Base
 
 	def send_confirmation(log)
 		@log = log
-		mail(:to => "<#{log.email}>", :subject => "Event Log Confirmation - #{@log.id}")
+		mail(:to => "<#{log.email}>", :subject => "Event Log Confirmation")
+	end
+
+	def send_confirmations(log_list)
+		@log_list = log_list
+		log = @log_list.first
+		mail(:to => "<#{log.email}>", :subject => "Event Log Confirmation")
 	end
 
 	def send_digest(logs, email)

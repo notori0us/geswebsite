@@ -1,0 +1,19 @@
+You logged events on the Green Engineering Scholars Involvement Tracking
+Website!
+
+Here's a little about your logs:
+<% @log_list.reverse.each do |log| %>
+--------------------------------------------------------------------------------
+Log ID: <%= log.id %>
+Category: <%= log.category %>
+Title: <%= log.title %>
+Location: <%= log.location %>
+Date: <%= log.date %>
+Hours: <% if log.category == 'CS' %><%= log.length %><% else %>n/a<% end %>
+--------------------------------------------------------------------------------
+<% end %>
+
+- your friends at the GES involvement tracking team
+
+--
+Problems? Open an issue at: https://github.com/notori0us/geswebsite/issues

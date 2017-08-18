@@ -28,27 +28,38 @@ class TrackEventsController < ApplicationController
 		@log.email.downcase!
 
 		if @log.valid?
-			if @log.category == 'CSGES'
-				@log.category = 'CS'
-				ges_log = @log.dup
-				ges_log.category = 'GES'
+			TrackEvent.transaction do
+				if @log.category == 'CSGES'
+					@log.category = 'CS'
+					ges_log = @log.dup
+					ges_log.category = 'GES'
 
-				UserMailer.send_confirmation(ges_log).deliver_now if ges_log.save
-			elsif @log.category == '2GES'
-				@log.category = 'GES'
-				ges2 = @log.dup
-				ges2.category = 'GES'
-				UserMailer.send_confirmation(ges2).deliver_now if ges2.save
-			elsif @log.category == '3GES'
-				@log.category = 'GES'
-				ges2 = @log.dup
-				ges2.category = 'GES'
-				ges3 = @log.dup
-				ges3.category = 'GES'
-				UserMailer.send_confirmation(ges2).deliver_now if ges2.save
-				UserMailer.send_confirmation(ges3).deliver_now if ges3.save
+					@log.save
+					ges_log.save
+					UserMailer.send_confirmations([ges_log, @log]).deliver_now
+				elsif @log.category == '2GES'
+					@log.category = 'GES'
+					ges2 = @log.dup
+					ges2.category = 'GES'
+
+					@log.save
+					ges2.save
+					UserMailer.send_confirmations([ges2, @log]).deliver_now
+				elsif @log.category == '3GES'
+					@log.category = 'GES'
+					ges2 = @log.dup
+					ges2.category = 'GES'
+					ges3 = @log.dup
+					ges3.category = 'GES'
+
+					@log.save
+					ges2.save
+					ges3.save
+					UserMailer.send_confirmations([ges3, ges2, @log]).deliver_now
+				else 
+					UserMailer.send_confirmation(@log).deliver_now if @log.save
+				end
 			end
-			UserMailer.send_confirmation(@log).deliver_now if @log.save
 			redirect_to track_events_saved_path
 		else
 			render 'new'
