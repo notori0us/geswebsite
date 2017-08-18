@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-	default :from => 'no-reply@osugreenscholars.org'
+	default :from => 'GES Involvement Tracking <no-reply@osugreenscholars.org>'
 
 	def send_confirmation(log)
 		@log = log
