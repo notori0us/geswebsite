@@ -2,7 +2,7 @@ require 'csv'
 
 class OsuemailValidator < ActiveModel::EachValidator
 	def validate_each(record, attribute, value)
-		unless value =~ /^[a-z]+\.[0-9]+@osu\.edu$/
+		unless value =~ /^[a-z\-]+\.[0-9]+@osu\.edu$/
 			record.errors[attribute] << (options[:message] || "is not a lowercase osu email")
 		end
 	end
