@@ -5,8 +5,18 @@
 .row
   .large-12.medium-12.column
     = form_for @log, url: {action: 'create'} do |f|
-
       .large-12.columns
+        .callout.warning
+          %h5
+            .fa.fa-exclamation-circle
+            A note about this week's outage
+          %p
+            If you didn't notice, earlier this week, this website was not
+            operational. We managed to save all your logs, and
+            they're available again.
+          %p
+            Sorry for the inconvenience,<br>
+            %em The Website Management
         - if @log.errors.any?
           .callout.alert.radius{data: {alert:true}}
             %h5
@@ -31,6 +41,9 @@
           class: ('is-invalid-input' if e.any?)
         - if e.any?
           %small.form-error.is-visible=e.join(', ')
+        %p.help-text
+          Please input your Ohio State email, all lowercase, and without the
+          word 'buckeyemail'.
 
       .large-12.columns
         -e = @log.errors[:year]
