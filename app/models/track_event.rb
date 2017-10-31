@@ -16,7 +16,7 @@ class HoursValidator < ActiveModel::Validator
 	end
 end
 
-class TrackEvent < ActiveRecord::Base
+class TrackEvent < ApplicationRecord
 
 	# validate and do a dropdown for category_options and year_options
 	CATEGORY_OPTIONS = [
