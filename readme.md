@@ -32,7 +32,9 @@ If you already have ruby installed, great, otherwise do this:
 2. [Install ruby-install](https://github.com/postmodern/ruby-install#install) -
    this is a tool that makes it easy to install different versions of ruby.
 
-3. `ruby-install ruby-2.2`
+3. Install ruby-2.2 - `ruby-install ruby-2.2`
+
+4. Install rails - `chruby ruby-2.2 && gem install rails`
 
 Finally, check out the [Rails getting started
 guide](http://guides.rubyonrails.org/getting_started.html) for more information
