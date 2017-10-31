@@ -32,9 +32,9 @@ If you already have ruby installed, great, otherwise do this:
 2. [Install ruby-install](https://github.com/postmodern/ruby-install#install) -
    this is a tool that makes it easy to install different versions of ruby.
 
-3. Install ruby-2.2 - `ruby-install ruby-2.2`
+3. Install ruby-2.4 - `ruby-install ruby-2.4`
 
-4. Install rails - `chruby ruby-2.2 && gem install rails`
+4. Install the bundler - `chruby ruby-2.4 && gem install bundler`
 
 Finally, check out the [Rails getting started
 guide](http://guides.rubyonrails.org/getting_started.html) for more information
@@ -47,8 +47,9 @@ give you *some* idea of what's happening. Hopefully.
 ```
 $ git clone https://github.com/<your_username>/geswebsite
 ```
-3. Make a change! Test with `rails server`
-4. [Make a pull request](https://help.github.com/articles/using-pull-requests/)
+3. `bundle install`
+4. Make a change! Test with `rails server`
+5. [Make a pull request](https://help.github.com/articles/using-pull-requests/)
 
 ### Need help?
 Feel free to email me if you're stuck or really are interested in help!
