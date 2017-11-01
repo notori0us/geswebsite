@@ -49,7 +49,15 @@ $ git clone https://github.com/<your_username>/geswebsite
 ```
 3. `bundle install`
 4. Make a change! Test with `rails server`
-5. [Make a pull request](https://help.github.com/articles/using-pull-requests/)
+
+### Run tests
+This app uses `rspec` for tests- meaning the tests live in the `spec/` folder.
+
+Run them all with `rake spec`.
+
+### Create a pull request
+Finally, send the change to me to merge it in by [making a pull
+request](https://help.github.com/articles/using-pull-requests/)
 
 ### Need help?
 Feel free to email me if you're stuck or really are interested in help!
