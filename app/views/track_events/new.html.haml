@@ -35,7 +35,7 @@
 
       .large-12.columns
         - e = @log.errors[:email]
-        = f.label :email, 'Ohio State Email (name.#@osu.edu please)',
+        = f.label :email, 'Ohio State Email (name.#@osu.edu)',
           class: ('is-invalid-label' if e.any?)
         = f.email_field :email, placeholder: 'buckeye.1@osu.edu',
           class: ('is-invalid-input' if e.any?)
