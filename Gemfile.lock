@@ -219,7 +219,7 @@ DEPENDENCIES
   coffee-rails
   factory_bot_rails
   font-awesome-rails
-  foundation-rails
+  foundation-rails (~> 6.0)
   haml
   jquery-rails
   listen

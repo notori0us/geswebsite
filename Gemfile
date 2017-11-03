@@ -17,7 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # HAML is a HTML templating language. I find it nicer than the included .erb
 gem 'haml'
 # foundation for rails - our UI framework of choice
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 6.0'
 # font awesome
 gem 'font-awesome-rails'
 
