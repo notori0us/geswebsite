@@ -73,7 +73,7 @@ class TrackEventsController < ApplicationController
   def get_digest
     @log = TrackEvent.new(track_event_params)
     @email = @log.email
-    unless @email =~ /^[a-z]+\.[0-9]+@osu\.edu$/
+    unless @email =~ /^[a-z\-]+\.[0-9]+@osu\.edu$/
       @errors = "please enter a lowercase OSU email (without 'buckeyemail')"
       render 'digest'
     else
@@ -81,7 +81,6 @@ class TrackEventsController < ApplicationController
       UserMailer.send_digest(@logs, @email).deliver_now
       redirect_to track_events_sent_path
     end
-
   end
 
   def delete_it_all
