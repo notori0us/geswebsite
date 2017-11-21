@@ -9,6 +9,10 @@ FactoryBot.define do
     date "2017-10-31"
     start_time "A test start time"
 
+    factory :track_event_with_hyphen do
+      email 'buckeye-buckeye.1@osu.edu'
+    end
+
     # already have
     factory :ges_event do
     end
@@ -25,5 +29,4 @@ FactoryBot.define do
     end
 
   end
-#<TrackEvent id: nil, email: nil, year: nil, category: nil, title: nil, location: nil, date: nil, info: nil, contact: nil, created_at: nil, updated_at: nil, length: nil, contact_name: nil, start_time: nil, description: nil>
 end

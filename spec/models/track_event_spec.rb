@@ -9,7 +9,7 @@ RSpec.describe TrackEvent, type: :model do
     end
 
     it "validates osu email with a hyphen" do
-      event = build(:track_event, email: 'hpyhenated-name.1@osu.edu')
+      event = build(:track_event_with_hyphen)
 
       expect(event).to be_valid
     end
