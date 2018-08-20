@@ -1,4 +1,4 @@
-class CreateTrackEvents < ActiveRecord::Migration
+class CreateTrackEvents < ActiveRecord::Migration[4.2]
   def change
     create_table :track_events do |t|
       t.string :email
