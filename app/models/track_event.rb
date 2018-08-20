@@ -21,8 +21,6 @@ class TrackEvent < ApplicationRecord
 
     # special cases
     'CSGES',
-    '2GES',
-    '3GES'
   ]
 
   validates_inclusion_of :category, :in => CATEGORY_OPTIONS

@@ -37,25 +37,6 @@ class TrackEventsController < ApplicationController
           @log.save
           ges_log.save
           UserMailer.send_confirmations([ges_log, @log]).deliver_now
-        elsif @log.category == '2GES'
-          @log.category = 'GES'
-          ges2 = @log.dup
-          ges2.category = 'GES'
-
-          @log.save
-          ges2.save
-          UserMailer.send_confirmations([ges2, @log]).deliver_now
-        elsif @log.category == '3GES'
-          @log.category = 'GES'
-          ges2 = @log.dup
-          ges2.category = 'GES'
-          ges3 = @log.dup
-          ges3.category = 'GES'
-
-          @log.save
-          ges2.save
-          ges3.save
-          UserMailer.send_confirmations([ges3, ges2, @log]).deliver_now
         else 
           UserMailer.send_confirmation(@log).deliver_now if @log.save
         end

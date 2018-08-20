@@ -51,16 +51,14 @@
           class: ('is-invalid-label' if e.any?)
         = f.select :category,
           { "Community Service": "CS",
-            "Community Service and 1 GES Event": "CSGES",
-            "1 GES Event": "GES",
-            "2 GES Events": "2GES",
-            "3 GES Events": "3GES",
+            "Community Service and GES Event": "CSGES",
+            "GES Event": "GES",
             "Long Term Event": "LTE" },
           class: ('is-invalid-input' if e.any?)
         - if e.any?
           %small.form-error.is-visible=e.join(', ')
         %p.help-text
-          Please indicate what kind of activity you are logging. These are new for the 2017-2018 year.
+          Please indicate what kind of activity you are logging.
 
       .large-12.columns
         -e = @log.errors[:title]
