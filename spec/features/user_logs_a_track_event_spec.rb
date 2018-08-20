@@ -33,7 +33,7 @@ RSpec.feature "UserLogsATrackEvent", type: :feature do
 
         fill_in 'Ohio State Email', with: 'test.123@osu.edu'
         select 'First', from: 'Year'
-        select '1 GES Event', from: 'Category'
+        select 'GES Event', from: 'Category'
         fill_in 'Title', with: 'Feature Test Title'
         fill_in 'Description', with: 'Feature Test Description'
         fill_in 'Location', with: 'Feature Test Location'
@@ -50,7 +50,7 @@ RSpec.feature "UserLogsATrackEvent", type: :feature do
 
         fill_in 'Ohio State Email', with: 'test.123@osu.edu'
         select 'First', from: 'Year'
-        select '1 GES Event', from: 'Category'
+        select 'GES Event', from: 'Category'
         fill_in 'Title', with: 'Feature Test Title'
         fill_in 'Description', with: 'Feature Test Description'
         fill_in 'Location', with: 'Feature Test Location'
